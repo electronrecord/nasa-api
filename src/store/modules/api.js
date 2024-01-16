@@ -1,3 +1,3 @@
 export default {
-  projects: '/api/projects'
+  projects: 'https://techport.nasa.gov/api/projects'
 };
