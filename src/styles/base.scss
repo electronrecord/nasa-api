@@ -1,0 +1,35 @@
+@import "mixins";
+
+html,
+body {
+  @include reset;
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+
+button {
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+/* DATEPICKER STYLING */
+.dp__main {
+  max-width: 300px;
+}
+.dp__clear_icon {
+  display: none!important;
+}
+.dp__input_icon {
+  transform: scale(1.8) translate(1px, -7px)!important;
+}
+.dp__input_readonly,
+.dp__action_buttons button {
+  font-size: 1.4rem!important;
+}

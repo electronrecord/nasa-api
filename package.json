@@ -4,10 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "cypress": "npx cypress open"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^7.4.1",
+    "axios": "^1.6.5",
     "core-js": "^3.8.3",
+    "cypress": "^13.6.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"

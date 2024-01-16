@@ -1,0 +1,19 @@
+@import "vars";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+
+h1, h2, h3 {
+  color: $black;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+ul, li {
+  list-style-type: none;
+}
