@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create an Axios instance
 const instance = axios.create({
-  // baseURL: 'https://api.example.com', // Replace with your API's base URL
+  baseURL: 'https://techport.nasa.gov',
   timeout: 60000, // Set a timeout for requests (optional)
 });
 
