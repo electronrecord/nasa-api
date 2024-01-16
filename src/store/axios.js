@@ -11,7 +11,8 @@ const instance = axios.create({
 instance.interceptors.request.use(config => {
   // const authToken = process.env.AUTH_BEARER;
   const authToken = 'eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUZWNoUG9ydCIsImV4cCI6MTcwNTQxNjkyNywibmJmIjoxNzA1MzMwNTI3LCJTRVNTSU9OX0lEIjoiWm5xa0JjUGs2bzExMGRtWWZESDkwZVI4bWhtRUpRY1I1Q1VEIiwiRklOR0VSUFJJTlRfSEFTSCI6IjM0REQ1MDZBNjhDREZBQTZFQjgzNEY4NTcyNkExMzJBNzU2RTU1RDEzNkI4NUNENTJDNTkyMjg1RjhDMTI5MTkifQ.8w44Gk8_PfrNgSeRGd25tPfpl2UovcKj2gT9S6FP97k';
-  config.headers.Authorization = `Bearer ${authToken}`;
+  // config.headers.Authorization = `Bearer ${authToken}`;
+  config.headers.Authorization = authToken;
   return config;
 }, error => {
   return Promise.reject(error);
