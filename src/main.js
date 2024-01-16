@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import BaseSelect from './components/BaseSelect.vue';
+import BaseLoader from './components/BaseLoader.vue';
 import './styles/helper-classes.scss';
 import './styles/typography.scss';
 import './styles/base.scss';
@@ -14,6 +15,7 @@ const app = createApp(App);
 app
   .component('BaseSelect', BaseSelect)
   .component('Datepicker', Datepicker)
+  .component('BaseLoader', BaseLoader)
   .use(store)
   .use(router)
   .mount('#app');

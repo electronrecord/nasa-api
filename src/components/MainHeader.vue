@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header w100 flex flex-between">
+  <header class="main-header fixed z99 w100 flex flex-between">
     <img src="../assets/TechPort-Logo-2018.png" alt="techport logo" />
     <img src="../assets/NASA-Logo.png" alt="nasa logo" />
   </header>

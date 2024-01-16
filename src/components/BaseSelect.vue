@@ -1,7 +1,7 @@
 <template>
   <label class="base-selector"
          :cy="cy || 'base-select'">
-    <span>{{ label }}</span>
+    <span class="inline-block m-r-8">{{ label }}:</span>
     <select @change="handleChange">
       <option :value="value"
               v-for="(item, index) in options"

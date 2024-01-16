@@ -86,7 +86,7 @@ describe('Projects page', () => {
         .should('not.exist')
     });
 
-    it.only('should update the data table if updatedSince date is changed', function () {
+    it('should update the data table if updatedSince date is changed', function () {
       cy
         .get('[cy="updated-since-datepicker"]')
         .click()

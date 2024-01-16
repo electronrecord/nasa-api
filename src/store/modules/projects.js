@@ -4,6 +4,11 @@ export const state = {
   updatedSince: '2024-01-7',
   projects: [],
   projectsWithDetails: [],
+  project: {
+    leadOrganization: {
+      organizationName: ''
+    }
+  },
   pagination: {
     page: 1,
     itemsPerPage: 10
@@ -20,11 +25,14 @@ export const mutations = {
   SET_ITEMS_PER_PAGE (state, value) {
     state.pagination.itemsPerPage = value
   },
-  SET_PAGE (state, {action}) {
+  SET_PAGE (state, {action, page}) {
     if (action === 'next') {
       state.pagination.page += 1
     } else {
       state.pagination.page -= 1
+    }
+    if (page) {
+      state.pagination.page = page
     }
   }
 }
@@ -45,11 +53,10 @@ export const actions = {
       commit('SET_STATE', {key: 'projectsWithDetails', value: responses.map(obj => obj.data.project)})
       commit('SET_REQ_STATE', 'idle')
     } catch (err) {
-      console.log('error')
       commit('SET_REQ_STATE', 'error')
     }
   },
-  async fetch_projects_by_id ({state, commit}, clbk = () => {}) {
+  async get_projects_by_id ({state, commit}, clbk = () => {}) {
     try {
       commit('SET_REQ_STATE', 'fetching')
       const {page, itemsPerPage} = state.pagination
@@ -63,6 +70,18 @@ export const actions = {
       commit('SET_STATE', {key: 'projectsWithDetails', value: responses.map(obj => obj.data.project)})
       commit('SET_REQ_STATE', 'idle')
       clbk()
+    } catch (err) {
+      commit('SET_REQ_STATE', 'error')
+    }
+  },
+  async get_project_by_id ({state, commit}, id) {
+    try {
+      commit('SET_STATE', {key: 'project', value: {}})
+      commit('SET_REQ_STATE', 'fetching')
+      const url = `${api.projects}/${id}`
+      const { data } = await axios.get(url)
+      commit('SET_STATE', {key: 'project', value: data.project})
+      commit('SET_REQ_STATE', 'idle')
     } catch (err) {
       commit('SET_REQ_STATE', 'error')
     }
