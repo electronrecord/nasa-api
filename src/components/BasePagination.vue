@@ -2,14 +2,16 @@
   <div class="base-pagination flex"
        cy="base-pagination">
     <button :disabled="+page === 1"
-            class="pointer"
+            :class="{pointer: +page > 1}"
+            class="m-r-24"
             cy="prev-page"
             @click="handlePage('back')" >
       <img src="../assets/arrow-left.svg" alt="arrow left" />
     </button>
     <span cy="page-and-total">{{ page }} / {{ total }}</span>
     <button :disabled="+page === total"
-            class="pointer"
+            :class="{pointer: +page < total}"
+            class="m-l-24"
             cy="next-page"
             @click="handlePage('next')">
       <img src="../assets/arrow-right.svg" alt="arrow right" />
