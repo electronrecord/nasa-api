@@ -26,7 +26,7 @@
                  @select="handleSelectTableItem" />
     </div>
 
-    <div class="flex-center m-t-24">
+    <div class="flex-center m-t-24" :class="{disabled: reqState === 'fetching'}">
       <BasePagination :page="page"
                       :total="totalPages"
                       @change="handlePageChange" />

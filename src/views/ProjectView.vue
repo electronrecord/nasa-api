@@ -19,7 +19,7 @@
     <div v-if="reqState === 'fetching'">
       <BaseLoader />
     </div>
-    <router-link to="/projects">Back</router-link>
+    <router-link cy="back-btn" to="/projects">Back</router-link>
   </div>
 </template>
 

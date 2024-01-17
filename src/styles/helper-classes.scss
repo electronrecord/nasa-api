@@ -422,3 +422,8 @@ span.ripple {
 .underline {
   text-decoration: underline;
 }
+
+.disabled {
+  @extend .click-disabled;
+  opacity: 0.5;
+}

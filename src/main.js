@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import Datepicker from '@vuepic/vue-datepicker';
+import Vue3Lottie from 'vue3-lottie';
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -16,6 +17,7 @@ app
   .component('BaseSelect', BaseSelect)
   .component('Datepicker', Datepicker)
   .component('BaseLoader', BaseLoader)
+  .use(Vue3Lottie)
   .use(store)
   .use(router)
   .mount('#app');

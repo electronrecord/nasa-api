@@ -98,6 +98,21 @@ describe('Projects page', () => {
         .get('[cy="updated-since-datepicker"] .dp__action_select')
         .click()
     });
+
+    it.only('should navigate to project details', function () {
+      cy
+        .get('[cy="data-table"] tbody tr')
+        .first()
+        .click()
+        .url()
+        .should('contain', '/project/')
+        .get('h1')
+        .should('have.text', projectsDetails[105782].project.title)
+        .get('[cy="back-btn"]')
+        .click()
+        .url()
+        .should('contain', '/projects')
+    });
   });
 
   describe('Error data fetching', () => {

@@ -12,7 +12,7 @@
       </tr>
       </thead>
 
-      <tbody>
+      <tbody v-if="reqState === 'idle'">
         <tr class="pointer"
             v-for="(item, index) in data"
             :key="index">
@@ -39,8 +39,6 @@
 </template>
 
 <script setup>
-  import BaseLoader from "@/components/BaseLoader.vue";
-
   const props = defineProps({
     cy: String,
     reqState: String,
