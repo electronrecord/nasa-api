@@ -6,7 +6,7 @@
     <select @change="handleChange"
             class="pointer"
             :id="id || name">
-      <option :value="value"
+      <option :value="item"
               v-for="(item, index) in options"
               :key="index">
         {{ item }}
@@ -28,8 +28,9 @@
     }
   })
   const emits = defineEmits(['change'])
+  // const model = ref(props.value)
 
-  function handleChange ({target: { value }}) {
+  function handleChange ({target: {value}}) {
     emits('change', {name: props.name, value})
   }
 </script>
