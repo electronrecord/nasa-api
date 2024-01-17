@@ -1,7 +1,8 @@
 import axios from '../axios'
 import api from './api'
+import { getPastDate } from '../data'
 export const state = {
-  updatedSince: '2024-01-7',
+  updatedSince: getPastDate(),
   projects: [],
   projectsWithDetails: [],
   project: {

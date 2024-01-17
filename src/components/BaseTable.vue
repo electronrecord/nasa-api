@@ -16,11 +16,13 @@
         <tr class="pointer"
             v-for="(item, index) in data"
             :key="index">
-          <td :class="key"
+          <td :class="{[key]: true, flex: key === 'title'}"
               v-for="({key}, idx) in header"
               :key="index"
               @click="selectItem(item)">
-            {{ item[key] }}
+            <span v-show="key === 'title'"
+                  class="inline-block">{{ (index + 1) + (+page - 1) * +itemsPerPage }}.&nbsp;</span>
+            <span class="inline-block">{{ item[key] }}</span>
           </td>
         </tr>
       </tbody>
@@ -42,6 +44,8 @@
   const props = defineProps({
     cy: String,
     reqState: String,
+    page: [String, Number],
+    itemsPerPage: [String, Number],
     header: Array,
     data: Array
   })
@@ -61,17 +65,23 @@
       padding: 0 8px;
       thead {
         th {
-          padding: 0 8px;
+          padding: 0 8px 4px;
           text-align: left;
           border-bottom: 1px solid lightgray;
         }
       }
       tbody {
-        tr.pointer:hover {
-          background-color: rgba(0, 0, 0, 0.05);
-        }
         td {
-          padding: 4px 8px;
+          padding: 8px;
+          line-height: 1.4;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 1025px) {
+      tbody {
+        tr.pointer:hover {
+          background-color: rgba(0, 0, 0, 0.03);
         }
       }
     }

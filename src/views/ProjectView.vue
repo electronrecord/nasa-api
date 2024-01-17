@@ -5,21 +5,32 @@
       <h1>{{ project.title }}</h1>
     </header>
 
-    <div>
-      <p class="f-18">
-        The lead: {{ project.leadOrganization?.organizationName }} <br>
-        Supporting organizations: {{ project.supportingOrganizations?.map(o => o.organizationName).join(', ') }} <br>
-        Available contact persons and their functions:<br>
-        Principal Investigators: {{ project.principalInvestigators?.map(o => o.fullName).join(', ') }}<br>
-        Program Managers: {{ project.programManagers?.map(o => o.fullName).join(', ') }}<br>
-        Co-Investigators: {{ project.coInvestigators?.map(o => o.fullName).join(', ') }}<br>
-      </p>
-    </div>
-
     <div v-if="reqState === 'fetching'">
       <BaseLoader />
     </div>
-    <router-link cy="back-btn" to="/projects">Back</router-link>
+    <div v-else>
+      <p>
+        <b>The lead:</b> {{ project.leadOrganization?.organizationName }} <br>
+        <b>Supporting organizations:</b> {{ project.supportingOrganizations?.map(o => o.organizationName).join(', ') }} <br>
+      </p>
+      <p>
+        <b>Available contact persons and their functions:</b><br>
+        &nbsp;&nbsp;Principal Investigators: {{ project.principalInvestigators?.map(o => o.fullName).join(', ') }}<br>
+        &nbsp;&nbsp;Program Managers: {{ project.programManagers?.map(o => o.fullName).join(', ') }}<br>
+        &nbsp;&nbsp;Program Directors: {{ project.programDirectors?.map(o => o.fullName).join(', ') }}<br>
+        &nbsp;&nbsp;Project Managers: {{ project.projectManagers?.map(o => o.fullName).join(', ') }}<br>
+        &nbsp;&nbsp;Co-Investigators: {{ project.coInvestigators?.map(o => o.fullName).join(', ') }}<br>
+      </p>
+    </div>
+
+    <div class="flex-center footer-actions">
+      <router-link cy="back-btn"
+                   class="flex align-center"
+                   to="/projects">
+        <img class="m-r-8" src="../assets/arrow-left.svg" alt="arrow left" />
+        <span>BACK to projects</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -46,6 +57,29 @@
       padding: 80px 16px 200px;
       max-width: 760px;
       margin: 0 auto;
+      h1 {
+        font-size: 2.4rem;
+      }
+      p {
+        line-height: 2;
+      }
+      p, b {
+        font-size: 1.8rem;
+      }
+      .footer-actions {
+        margin-top: 48px;
+        a {
+          text-decoration: none;
+          span {
+            transition: transform 0.2s ease-in-out;
+          }
+          &:hover {
+            span {
+              transform: translateX(-3px);
+            }
+          }
+        }
+      }
     }
   }
 </style>

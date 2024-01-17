@@ -1,8 +1,11 @@
 <template>
   <label class="base-selector"
+         :for="id || name"
          :cy="cy || 'base-select'">
     <span class="inline-block m-r-8">{{ label }}:</span>
-    <select @change="handleChange">
+    <select @change="handleChange"
+            class="pointer"
+            :id="id || name">
       <option :value="value"
               v-for="(item, index) in options"
               :key="index">
@@ -15,6 +18,7 @@
 <script setup>
   const props = defineProps({
     cy: String,
+    id: String,
     name: String,
     label: String,
     value: String,
@@ -32,5 +36,12 @@
 
 <style lang="scss">
   .base-selector {
+    @media only screen and (min-width: 0) {
+      select {
+        padding: 2px 4px;
+        border: 1px solid lightgray;
+        border-radius: 4px;
+      }
+    }
   }
 </style>

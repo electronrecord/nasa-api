@@ -14,6 +14,7 @@
         />
       </div>
       <BaseSelect label="items per page"
+                  name="itemsPerPage"
                   cy="select-items-per-page"
                   :options="itemsPerPageOptions"
                   @change="handleItemsPerPage" />
@@ -23,6 +24,8 @@
       <BaseTable :header="tableHeader"
                  :reqState="reqState"
                  :data="projects"
+                 :page="page"
+                 :itemsPerPage="itemsPerPage"
                  @select="handleSelectTableItem" />
     </div>
 
@@ -44,9 +47,11 @@
 
   const { state, dispatch, getters, commit } = useStore()
   const projectWithDetails = computed(() => state.projects.projectsWithDetails)
+  // don't fetch the projects again if they are already loaded
   !projectWithDetails.value.length && dispatch('get_projects')
   const router = useRouter()
   const page = computed(() => state.projects.pagination.page)
+  const itemsPerPage = computed(() => state.projects.pagination.itemsPerPage)
   const reqState = computed(() => state.projects.requestState)
   const totalPages = computed(() => getters.totalPages )
   const projects = computed(() => getters.projects)
@@ -103,6 +108,7 @@
       .sort-filter {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .base-selector {
           margin-top: 0;
         }
