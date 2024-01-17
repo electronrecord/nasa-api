@@ -13,13 +13,15 @@
         <b>The lead:</b> {{ project.leadOrganization?.organizationName }} <br>
         <b>Supporting organizations:</b> {{ project.supportingOrganizations?.map(o => o.organizationName).join(', ') }} <br>
       </p>
-      <p>
+      <p class="contact-roles">
         <b>Available contact persons and their functions:</b><br>
-        &nbsp;&nbsp;Principal Investigators: {{ project.principalInvestigators?.map(o => o.fullName).join(', ') }}<br>
-        &nbsp;&nbsp;Program Managers: {{ project.programManagers?.map(o => o.fullName).join(', ') }}<br>
-        &nbsp;&nbsp;Program Directors: {{ project.programDirectors?.map(o => o.fullName).join(', ') }}<br>
-        &nbsp;&nbsp;Project Managers: {{ project.projectManagers?.map(o => o.fullName).join(', ') }}<br>
-        &nbsp;&nbsp;Co-Investigators: {{ project.coInvestigators?.map(o => o.fullName).join(', ') }}<br>
+        <span class="block">
+          Principal Investigators: {{ project.principalInvestigators?.map(o => o.fullName).join(', ') }}<br>
+          Program Managers: {{ project.programManagers?.map(o => o.fullName).join(', ') }}<br>
+          Program Directors: {{ project.programDirectors?.map(o => o.fullName).join(', ') }}<br>
+          Project Managers: {{ project.projectManagers?.map(o => o.fullName).join(', ') }}<br>
+          Co-Investigators: {{ project.coInvestigators?.map(o => o.fullName).join(', ') }}<br>
+        </span>
       </p>
     </div>
 
@@ -46,9 +48,6 @@
   const reqState = computed(() => state.projects.requestState)
   const project = computed(() => state.projects.project)
   dispatch('get_project_by_id', id)
-  const roles = ['principalInvestigators', 'programManagers', 'projectManagers', 'coInvestigators']
-
-
 </script>
 
 <style lang="scss">
@@ -62,9 +61,17 @@
       }
       p {
         line-height: 2;
+        margin-bottom: 0;
       }
       p, b {
         font-size: 1.8rem;
+      }
+      .contact-roles {
+        padding-top: 0;
+        margin-top: 0;
+        span {
+          margin-left: 16px;
+        }
       }
       .footer-actions {
         margin-top: 48px;
