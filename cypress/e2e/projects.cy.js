@@ -99,7 +99,7 @@ describe('Projects page', () => {
         .click()
     });
 
-    it.only('should navigate to project details', function () {
+    it('should navigate to project details', function () {
       cy
         .get('[cy="data-table"] tbody tr')
         .first()
